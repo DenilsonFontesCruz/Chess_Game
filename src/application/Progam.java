@@ -1,6 +1,3 @@
-/**
- * 
- */
 package application;
 
 import java.util.InputMismatchException;
@@ -29,7 +26,11 @@ public class Progam {
 			System.out.print("\n\nOrigem: ");
 			ChessPosition source = UI.readChessPosition(inp);
 			
-			System.out.print("\nDestino: ");
+			boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+			UI.clearScreen();
+			UI.printBoard(chessMatch.getPieces(), possibleMoves);
+			
+			System.out.print("\n\nDestino: ");
 			ChessPosition target = UI.readChessPosition(inp);
 			
 			ChessPiece capturedChessPiece = chessMatch.performChessMove(source, target);
@@ -42,9 +43,6 @@ public class Progam {
 		catch(InputMismatchException e) {
 			System.out.println(e.getMessage());
 			inp.next();
-		}
-		finally {
-			inp.close();
 		}
 		
 		}
