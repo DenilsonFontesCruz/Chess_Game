@@ -1,6 +1,8 @@
 package boardgame;
 
 public class Board {
+	
+	//Finished
 
 	private Integer rows;
 	private Integer columns;
