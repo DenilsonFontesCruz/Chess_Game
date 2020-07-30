@@ -38,8 +38,21 @@ public class Progam {
 			
 			ChessPiece capturedChessPiece = chessMatch.performChessMove(source, target);
 		
-			if( capturedChessPiece != null) {
+			if(capturedChessPiece != null) {
 				captured.add(capturedChessPiece);
+			}
+			
+			if(chessMatch.getPromoted() != null) {
+				System.out.println(UI.ANSI_GREEN + "Digite a peca a ser promovida (B/T/C/R): " + UI.ANSI_YELLOW);
+				String type = inp.nextLine().toUpperCase();
+				
+				while(!type.equals("B") && !type.equals("T") && !type.equals("C") && !type.equals("R")) {
+					System.out.println(UI.ANSI_GREEN + "Valor invalido! \nDigite a peca a ser promovida (B/T/C/R): " + UI.ANSI_YELLOW);
+					type = inp.nextLine().toUpperCase();
+				}
+				System.out.println(UI.ANSI_RESET);
+				
+				chessMatch.replacePromotedPiece(type);
 			}
 			
 		}
